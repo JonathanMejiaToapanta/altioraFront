@@ -1,0 +1,41 @@
+<div>
+    <h1>Vista Cliente</h1>
+</div>
+<div>
+    <button (click)="viewClient()" >Ingresar Cliente</button> <button (click)="listClients()">Desplegar Clientes</button>
+</div>
+<div *ngIf="addClient">
+    <br>
+    <label>Nombre:</label> <input class="name" type="text" [(ngModel)]="name" placeholder="Ingrese el nombre"/>
+    <br>
+    <br>
+    <label>Apellido:</label> <input class="name" type="text" [(ngModel)]="last" placeholder="Ingrese el apellido"/>
+    <br><br>
+    <div *ngIf="!ifEdit">
+        <button (click)="saveClient()" >Guardar Cliente</button>  <button (click)="cancelar()" >Cancelar</button>
+    </div>
+    <div *ngIf="ifEdit">
+        <button (click)="updateClient()" >Guardar cambios</button>  <button (click)="cancelarcambios()" >Cancelar cambios</button>
+    </div>
+
+</div>
+<div *ngIf="listClient">
+    <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let data of client[0]">
+          <tr>
+            <td>{{data.name}}</td>
+            <td>{{data.lastName}}</td>
+            <td>
+                <button (click)="editClient(data)" >Editar</button>  <button (click)="delete(data.idClient)" >Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,37 @@
+<div>
+    <h1>Vista Producto</h1>
+</div>
+<div>
+    <button (click)="viewProduct()" >Ingresar Producto</button> <button (click)="listProducts()">Desplegar Productos</button>
+</div>
+<div *ngIf="addProduct">
+    <br>
+    <label>Código:</label> <input class="name" type="text" [(ngModel)]="code" placeholder="Ingrese el código"/>
+    <br>
+    <br>
+    <label>Nombre:</label> <input class="name" type="text" [(ngModel)]="name" placeholder="Ingrese descripción"/>
+    <br>
+    <br>
+    <label>Precio:</label> <input class="name" type="text" [(ngModel)]="price" placeholder="Ingrese el precio unitario"/>
+    <br><br>
+    <button (click)="saveProduct()" >Guardar Producto</button>  <button (click)="cancelar()" >Cancelar</button>
+    
+</div>
+<div *ngIf="listProduct">
+    <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Descripción</th>
+            <th>Precio unitario</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let data of product[0]">
+          <tr>
+            <td>{{data.code}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.priceUnit}}</td>
+          </tr>
+        </tbody>
+    </table>
+</div>

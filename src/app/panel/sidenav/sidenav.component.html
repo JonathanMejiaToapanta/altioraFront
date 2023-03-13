@@ -1,0 +1,21 @@
+<div class="content">
+    <div class="title">
+        <h1>Prueba AltioraCorp</h1>
+    </div>
+    <div class="menu">
+        <nav mat-tab-nav-bar color="accent">
+            <div *ngFor="let link of navLinks" class="ateme">
+              <a *ngIf="link.visible" mat-tab-link  [routerLink]="link.link" routerLinkActive #rla="routerLinkActive">
+              {{link.label}}
+            </a>
+            </div>
+        </nav>
+    </div>
+    <div class="views">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+
+
+

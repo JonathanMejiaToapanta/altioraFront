@@ -1,0 +1,25 @@
+.content {
+    width: 100%;
+    font-size: 18px;
+}
+
+.menu {
+    float: left;
+    width: 15%;
+    padding: 2% 0% 5% 2%;
+    font-size: 25px;
+}
+
+.views {
+    float: left;
+    width: 60%;
+    padding: 2% 2% 5% 0%;
+}
+
+.ateme {
+    margin-top: 15px;
+}
+
+.title {
+    text-align: center;
+}

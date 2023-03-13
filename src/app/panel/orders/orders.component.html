@@ -1,0 +1,85 @@
+<div>
+    <h1>Vista Ordenes</h1>
+</div>
+<br><br>
+<div>
+    <button (click)="viewsave()" >Ingresar Ordens</button> <button (click)="listor()">Desplegar Ordenes</button>
+</div>
+<br><br>
+<div *ngIf="saveOrders">
+    <div>
+        <label>Productos</label>
+        <select class="name" name="miselect" [(ngModel)]="productSelect" (ngModelChange)="onProduct($event)">
+            <option [value]="" selected>Seleccionar</option>
+            <option [value]="data.id" *ngFor="let data of product[0]">{{data.code}} {{data.name}}</option>
+        </select>
+        <button *ngIf="ifProductSelect" (click)="addProduct()">Agregar producto</button>
+        <br><br>
+        <label>Clientes</label>
+        <select class="name" name="miselect" [(ngModel)]="clientSelect">
+            <option [value]="data.idClient" *ngFor="let data of client[0]">{{data.name}} {{data.lastName}}</option>
+        </select>
+        <label></label>
+    </div>
+    <br><br>
+    <div>
+        <div>
+            <h3>Productos seleccionados</h3>
+        </div>
+        <table>
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Precio unitario</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let dat of productsSelected; let i = index">
+              <tr *ngFor="let data of dat">
+                <td>{{data.code}}</td>
+                <td>{{data.name}}</td>
+                <td>{{data.priceUnit}}</td>
+                <td><button (click)="deleteProduct(i)">Eliminar de lista</button></td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+    <br><br>
+    <div>
+        <button (click)="saveOrder()">Guardar Orden</button>
+    </div>
+</div>
+<div *ngIf="listOrders">
+    <div>
+        <label>Clientes</label>
+        <select class="name" name="miselect" [(ngModel)]="clientSelect" (ngModelChange)="onClient($event)">
+            <option [value]="data.idClient" *ngFor="let data of client[0]">{{data.name}} {{data.lastName}}</option>
+        </select>
+        <button *ngIf="ifclienSelect" (click)="searOrders()">Buscar ordenes</button>
+    </div>
+    <br><br>
+    <div>
+        <div>
+            <h3>Ordenes realizadas</h3>
+        </div>
+        <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Code</th>
+                <th>Nombre</th>
+                <th>Precio unitario</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let dat of ordersClient; let i = index">
+              <tr *ngFor="let data of dat">
+                <td>{{data.dateCreated}}</td>
+                <td>{{data.code}}</td>
+                <td>{{data.name}}</td>
+                <td>{{data.priceUnit}}</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

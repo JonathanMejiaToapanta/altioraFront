@@ -3,4 +3,5 @@ export interface ProductModel{
     code: string;
     name: string;
     priceUnit: number;
+    stock: number;
 }

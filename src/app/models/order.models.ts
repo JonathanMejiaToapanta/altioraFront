@@ -3,4 +3,5 @@ export interface OrderInterface {
     dateCreated: Date;
     idProduct: string;
     idClient: string;
+    cant: number;
 }

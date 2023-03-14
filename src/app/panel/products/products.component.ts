@@ -44,7 +44,8 @@ export class ProductsComponent implements OnInit {
         id: 'e0219786-2a49-451c-89b2-7546a8af45ea',
         code: this.code,
         name: this.name,
-        priceUnit: this.price
+        priceUnit: this.price,
+        stock: 4
       }
       Swal.fire({
         text: '¿Desea guardar los datos?',

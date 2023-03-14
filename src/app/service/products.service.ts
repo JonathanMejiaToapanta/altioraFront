@@ -33,7 +33,7 @@ export class ProductsService {
       });
   }
 
-  findProducts(id: string) {
-    return this.http.get(environment.apiUrl + '/findProduct?id='+id);
+  findProducts(id: string, cant: number) {
+    return this.http.get(environment.apiUrl + '/findProduct?id='+id +"&can="+cant);
   }
 }

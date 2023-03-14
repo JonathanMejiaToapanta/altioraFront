@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { empty } from 'rxjs';
 import { OrderInterface } from 'src/app/models/order.models';
 import { ClientsService } from 'src/app/service/clients.service';
 import { OrdersService } from 'src/app/service/orders.service';
@@ -24,6 +25,7 @@ export class OrdersComponent implements OnInit {
   ifclienSelect: boolean = false;
   idClient: string = '';
   ordersClient: any = [];
+  cantPr: number = 0;
 
   constructor(
     private productService: ProductsService,
@@ -69,9 +71,18 @@ export class OrdersComponent implements OnInit {
   }
 
   addProduct() {
-    this.productService.findProducts(this.idProduct).subscribe(data => {
-      this.productsSelected.push(data)
-    })
+    if (this.cantPr > 0) {
+      this.productService.findProducts(this.idProduct, this.cantPr).subscribe((data: any) => {
+        if (data.length > 0) {
+          data[0].stock = this.cantPr;
+          this.productsSelected.push(data[0]);
+        } else {
+          Swal.fire("Stock insuficiente");
+        }
+      })
+    } else {
+      Swal.fire("Ingresar almenos una unidad en cantidad")
+    }
   }
 
   deleteProduct(i: number) {
@@ -93,8 +104,9 @@ export class OrdersComponent implements OnInit {
             const order: OrderInterface = {
               id: 'e0219786-2a49-451c-89b2-7546a8af45ea',
               dateCreated: new Date(),
-              idProduct: element[0].id,
-              idClient: this.clientSelect
+              idProduct: element.id,
+              idClient: this.clientSelect,
+              cant: element.stock
             }
             this.orderService.saveOrder(order).then((result) => {
               Swal.fire('Orden Guardada');

@@ -1,7 +1,6 @@
 <div>
     <h1>Vista Ordenes</h1>
 </div>
-<br><br>
 <div>
     <button (click)="viewsave()" >Ingresar Ordens</button> <button (click)="listor()">Desplegar Ordenes</button>
 </div>
@@ -13,6 +12,7 @@
             <option [value]="" selected>Seleccionar</option>
             <option [value]="data.id" *ngFor="let data of product[0]">{{data.code}} {{data.name}}</option>
         </select>
+        <label *ngIf="ifProductSelect" >  Cant: </label><input *ngIf="ifProductSelect" class="name"  type="number" [(ngModel)]="cantPr"/>
         <button *ngIf="ifProductSelect" (click)="addProduct()">Agregar producto</button>
         <br><br>
         <label>Clientes</label>
@@ -32,14 +32,16 @@
                 <th>Código</th>
                 <th>Descripción</th>
                 <th>Precio unitario</th>
+                <th>Cantidad</th>
                 <th>Acción</th>
               </tr>
             </thead>
-            <tbody *ngFor="let dat of productsSelected; let i = index">
-              <tr *ngFor="let data of dat">
+            <tbody *ngFor="let data of productsSelected; let i = index">
+              <tr >
                 <td>{{data.code}}</td>
                 <td>{{data.name}}</td>
                 <td>{{data.priceUnit}}</td>
+                <td>{{data.stock}}</td>
                 <td><button (click)="deleteProduct(i)">Eliminar de lista</button></td>
               </tr>
             </tbody>

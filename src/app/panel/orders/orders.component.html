@@ -72,6 +72,7 @@
                 <th>Code</th>
                 <th>Nombre</th>
                 <th>Precio unitario</th>
+                <th>Cantidad</th>
               </tr>
             </thead>
             <tbody *ngFor="let dat of ordersClient; let i = index">
@@ -80,6 +81,7 @@
                 <td>{{data.code}}</td>
                 <td>{{data.name}}</td>
                 <td>{{data.priceUnit}}</td>
+                <td>{{data.cant}}</td> 
               </tr>
             </tbody>
         </table>

@@ -45,7 +45,7 @@ export class ProductsComponent implements OnInit {
         code: this.code,
         name: this.name,
         priceUnit: this.price,
-        stock: 4
+        stock: 10
       }
       Swal.fire({
         text: '¿Desea guardar los datos?',
